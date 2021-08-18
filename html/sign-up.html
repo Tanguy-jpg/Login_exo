@@ -1,0 +1,74 @@
+<h1>Inscription</h1>
+<?php 
+    if(isset($_GET['reg_err'])){
+        $err = htmlspecialchars($_GET['reg_err']);
+
+        switch($err)
+        {
+            case 'sucess':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Sucess</strong> Sucessfull sign-up !
+            </div>
+            <?php
+            break;
+
+            case 'password':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Error</strong> different passwords
+            </div>
+            <?php
+            break;
+
+            case 'email':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Error</strong> invalid email
+            </div>
+            <?php
+            break;
+
+            case 'email_length':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Error</strong> Too long email
+            </div>
+            <?php
+            break;
+
+            case 'pseudo_length':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Error</strong> Too long nickname 
+            </div>
+            <?php
+            break;
+
+            case 'already':
+            ?>
+            <div class="alert alert-sucess">
+                <strong>Error</strong> this account already exists
+            </div>
+            <?php
+            break;
+        }
+    }
+?>
+<form action="sign-up_process.php" method="post">
+
+    <p>nickname</p>
+    <input type="text" name="pseudo" required="required" placeholder="nickname" autocomplete="off" />
+
+    <p>email</p>
+    <input type="email" name="email" required="required" placeholder="email" autocomplete="off" />
+
+    <p>password</p>
+    <input type="password" name="password" required="required" placeholder="password" autocomplete="off" />
+
+    <p>confirm password</p>
+    <input type="password" name="password_retype" required="required" placeholder="retype password" autocomplete="off" />
+
+    <input type="submit" value="Sign up">
+    <a href="index.php">Sign in</a>
+</form>
